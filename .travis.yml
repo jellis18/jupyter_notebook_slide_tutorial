@@ -1,4 +1,5 @@
 language: python
+cache: pip
 
 python:
     - "2.7"
@@ -16,8 +17,8 @@ after_success: |
     if [ -n "$GITHUB_API_KEY" ]; then
     git checkout --orphan gh-pages
     git rm -rf --cached .
-    mv nb.slides.html index.html
-    git add -f --ignore-errors index.html img reveal.js
+    #mv nb.slides.html index.html
+    git add -f --ignore-errors nb.slides.html img reveal.js
     git -c user.name='travis' -c user.email='travis' commit -m init
-    git push -f -q https://jellis18:$GITHUB_API_KEY@github.com/jellis18/jupyter_notebook_slide_tutorial gh-pages
+    git push -f -q https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$TRAVIS_REPO_SLUG gh-pages
     fi
