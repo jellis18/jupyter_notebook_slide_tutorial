@@ -17,7 +17,7 @@ after_success: |
     git checkout --orphan gh-pages
     git rm -rf --cached .
     mv nb.slides.html index.html
-    git add -f index.html img reveal.js
+    git add -f --ignore-errors index.html img reveal.js
     git -c user.name='travis' -c user.email='travis' commit -m init
     git push -f -q https://$GITHUB_USER:$GITHUB_API_KEY@github.com/$GITHUB_USER/$TRAVIS_REPO_SLUG gh-pages
     fi
